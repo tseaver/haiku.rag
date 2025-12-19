@@ -1,6 +1,13 @@
 # Changelog
 ## [Unreleased]
 
+### Added
+
+- **Prompt Customization**: Configure agent prompts via `prompts` config section
+  - `domain_preamble`: Prepended to all agent prompts for domain context
+  - `qa`: Full replacement for QA agent prompt
+  - `synthesis`: Full replacement for research synthesis prompt
+
 ## [0.22.0] - 2025-12-19
 
 ### Added
