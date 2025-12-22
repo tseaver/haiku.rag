@@ -66,6 +66,28 @@ class RerankingConfig(BaseModel):
     model: ModelConfig | None = None
 
 
+class RaptorConfig(BaseModel):
+    """Configuration for RAPTOR hierarchical summarization.
+
+    Attributes:
+        enabled: Whether RAPTOR tree building is enabled
+        max_depth: Maximum number of tree layers
+        min_cluster_size: Minimum nodes required to form a cluster
+        max_cluster_size: Soft cap on cluster size
+        umap_n_neighbors: UMAP neighborhood size for dimensionality reduction
+        umap_min_dist: UMAP minimum distance parameter
+        model: Optional model config for summarization (defaults to qa.model)
+    """
+
+    enabled: bool = False
+    max_depth: int = 5
+    min_cluster_size: int = 3
+    max_cluster_size: int = 15
+    umap_n_neighbors: int = 10
+    umap_min_dist: float = 0.0
+    model: ModelConfig | None = None
+
+
 class QAConfig(BaseModel):
     model: ModelConfig = Field(
         default_factory=lambda: ModelConfig(
@@ -184,3 +206,4 @@ class AppConfig(BaseModel):
     search: SearchConfig = Field(default_factory=SearchConfig)
     providers: ProvidersConfig = Field(default_factory=ProvidersConfig)
     agui: AGUIConfig = Field(default_factory=AGUIConfig)
+    raptor: RaptorConfig = Field(default_factory=RaptorConfig)
