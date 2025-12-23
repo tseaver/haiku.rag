@@ -77,6 +77,7 @@ class RaptorConfig(BaseModel):
         umap_n_neighbors: UMAP neighborhood size for dimensionality reduction
         umap_min_dist: UMAP minimum distance parameter
         model: Optional model config for summarization (defaults to qa.model)
+        max_search_results: Maximum RAPTOR summaries to include in search results
     """
 
     enabled: bool = False
@@ -86,6 +87,7 @@ class RaptorConfig(BaseModel):
     umap_n_neighbors: int = 10
     umap_min_dist: float = 0.0
     model: ModelConfig | None = None
+    max_search_results: int = 3
 
 
 class QAConfig(BaseModel):
